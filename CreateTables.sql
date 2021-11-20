@@ -76,12 +76,12 @@ CREATE TABLE tblGenre_Content
 (Genre_ContentID INT IDENTITY(1,1) PRIMARY KEY,
 ContentID INT FOREIGN KEY REFERENCES tblContent(ContentID) NOT NULL,
 GenreID INT FOREIGN KEY REFERENCES tblGenre(GenreID) NOT NULL,
-GenreContentPerc decimal(5,4) NOT NULL)
+GenreContentPerc FLOAT NOT NULL)
 
 -- Language
 CREATE TABLE tblLanguage
 (LanguageID INT IDENTITY(1,1) PRIMARY KEY,
-LanguageName varchar(100) NOT NULL,
+LanguageShortName varchar(30) NOT NULL,
 LanguageDesc varchar(200) NOT NULL)
 
 -- Language_Content
