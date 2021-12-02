@@ -8,7 +8,7 @@ CustomerDOB DATE NOT NULL,
 CustomerStreetAddress VARCHAR(500) NOT NULL,
 CustomerCity VARCHAR(500) NOT NULL,
 CustomerState VARCHAR(100) NOT NULL,
-CustomerZipCode INT NOT NULL,
+CustomerZipCode INT NOT NULL)
 GO
 
 -- REVIEW
@@ -22,7 +22,7 @@ GO
 CREATE TABLE tblCustomer_Type
 (CustomerTypeID INT IDENTITY(1,1) PRIMARY KEY,
 CustomerTypeName VARCHAR(500) NOT NULL,
-CustomerTypeDesc VARCHAR(1000) NOT NULL
+CustomerTypeDesc VARCHAR(1000) NOT NULL)
 GO
 
 -- GENRE
@@ -128,12 +128,12 @@ AudienceID INT FOREIGN KEY REFERENCES tblAudience(AudienceID) NOT NULL,
 Content_TypeID INT FOREIGN KEY REFERENCES tblCONTENT_Type(Content_TypeID) NOT NULL,
 ContentName VARCHAR(500) NOT NULL,
 ContentReleaseDate DATE NOT NULL,
-ContentViews INT NOT NULL
+ContentViews INT NOT NULL)
 GO
 
 -- Content_Type (lookup table)
 CREATE TABLE tblContent_Type
 (ContentTypeID INT IDENTITY(1,1) PRIMARY KEY,
 ContentTypeName VARCHAR(500) NOT NULL,
-ContentTypeDesc VARCHAR(1000) NOT NULL
+ContentTypeDesc VARCHAR(1000) NOT NULL)
 GO
