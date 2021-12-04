@@ -208,7 +208,7 @@ ALTER TABLE tblGenre
 DROP COLUMN AVG_genre_rating;
 
 
--- Movie ratings must be over 3 Stars to be available for customers
+-- (business rule) Movie ratings must be over 3 Stars to be available for customers
 
 GO 
 CREATE FUNCTION fn_goodqualitymoviesonly()
@@ -232,7 +232,7 @@ BEGIN
 	ADD CONSTRAINT goodmoviesonly
 	CHECK (dbo.fn_goodqualitymoviesonly() = 0)
 
--- No personnel under the age of 18 can work on an R rated movie
+-- (business rule) No personnel under the age of 18 can work on an R rated movie
 
 GO 
 CREATE FUNCTION fn_underageWorkerRestriction()
@@ -259,7 +259,7 @@ BEGIN
 
 
 SELECT * FROM tblAUDIENCE
--- Netflix can only have 50 R rated movies 
+-- (business rule) Netflix can only have 50 R rated movies 
 
 GO 
 CREATE FUNCTION fn_limitsusmovies()
@@ -363,3 +363,4 @@ WHERE c.AVG_Customer_rating > 3
 GO
 
 SELECT * FROM above_3_customer_ratings
+
