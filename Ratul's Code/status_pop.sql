@@ -1,0 +1,7 @@
+USE INFO_430_Proj_02a
+
+SELECT * FROM tblSTATUS_WORKING
+
+INSERT INTO tblSTATUS (StatusName, StatusDesc)
+SELECT StatusName, StatusDesc
+FROM tblSTATUS_WORKING
