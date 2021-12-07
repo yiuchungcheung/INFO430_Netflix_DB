@@ -296,3 +296,34 @@ go
 select * from view_RankGenreByState
 where Ranking <= 5
 
+--																COMPLEX QUERIES
+
+/*
+ Get the list of production companies that have had the highest average rating in a particular genre where the genrePercentage is at least 30%
+*/
+
+select p.ProductionName, avg(rt.NumRating) as AvgRating
+from tblProduction p
+    join tblCredit c on c.ProductionID = p.ProductionID
+    join tblContent co on c.ContentID = co.ContentID
+    join tblGenre_Content gc on c.ContentID = gc.ContentID
+    join tblGenre g on gc.GenreID = g.GenreID
+    join tblStreaming s on c.ContentID = s.ContentID
+    join tblRating rt on rt.RatingID = s.RatingID
+where g.GenreName = 'Horror'
+    and gc.GenreContentPerc >= 30
+group by p.ProductionName
+order by AvgRating desc
+
+/*
+- Get the names of the personnel who have been associated with films that have an average rating of at least 4
+*/
+select p.PersonnelFname, p.PersonnelLname, avg(rt.NumRating) as AvgRating 
+from tblPERSONNEL p
+    join tblCredit c on p.PersonnelID = c.PersonnelID
+    join tblCONTENT co on c.ContentID = co.ContentID
+    join tblSTREAMING s on co.ContentID = s.ContentID
+    join tblRATING rt on rt.RatingID = s.RatingID
+group by p.PersonnelFname, p.PersonnelLname
+having avg(rt.NumRating) >= 4
+order by AvgRating desc
