@@ -327,3 +327,6 @@ from tblPERSONNEL p
 group by p.PersonnelFname, p.PersonnelLname
 having avg(rt.NumRating) >= 4
 order by AvgRating desc
+
+-- backup
+backup database info_430_proj_02a to disk = 'c:/sql/info430_proj_02a.bak' with differential
